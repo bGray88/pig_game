@@ -42,7 +42,7 @@ const setGame = function () {
 
 const rollDice = function () {
   diceFace        = Math.ceil(Math.random() * diceImages);
-  diceElement.src = `dice-${diceFace}.png`;
+  diceElement.src = `${document.location.pathname}images/dice/dice-${diceFace}.png`;
 };
 
 const hideDice = function () {
