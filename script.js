@@ -12,16 +12,30 @@ let diceFace         = 0;
 let currentScore     = 0;
 let activePlayer     = 0;
 let playerScores     = [0, 0];
+let playing          = true;
+let winningNumber    = 100;
 
 const checkDice = function () {
   if (diceFace === 1) {
     changePlayer();
   } else {
-    setScore();
+    curScrElements[activePlayer].textContent = currentScore += Number(diceFace);
   }
 };
 
+const checkScore = function () {
+  for (const playerScore of playerScores) {
+    if (playerScore >= winningNumber) {
+      playing = false;
+      hideDice();
+      playerElements[activePlayer].classList.toggle('player--winner');
+      playerElements[activePlayer].classList.toggle('player--active');
+    };
+  };
+};
+
 const changePlayer = function () {
+  diceFace = 0;
   curScrElements[activePlayer].textContent = currentScore = 0;
   activePlayer = activePlayer === 0 ? 1 : 0;
   playerElements.forEach ( function(player, currentIndex, listObj) {
@@ -30,14 +44,31 @@ const changePlayer = function () {
 };
 
 const setScore = function () {
-  curScrElements[activePlayer].textContent = currentScore += Number(diceFace);
-  scoreElements[activePlayer].textContent = playerScores[activePlayer] += Number(diceFace);
+  scoreElements[activePlayer].textContent = playerScores[activePlayer] += currentScore;
 };
 
-const setGame = function () {
+const init = function () {
+  if (playing === false) {
+    resetPlayers();
+    resetScreen();
+    playing = true;
+  }
+};
+
+const resetPlayers = function () {
+  currentScore = 0;
+  activePlayer = 0;
+  playerScores = [0, 0];
+};
+
+const resetScreen = function () {
+  hideDice();
   scoreElements[0].textContent = 0;
   scoreElements[1].textContent = 0;
-  hideDice();
+  playerElements[0].classList.remove('player--winner');
+  playerElements[1].classList.remove('player--winner');
+  playerElements[0].classList.add('player--active');
+  playerElements[1].classList.remove('player--active');
 };
 
 const rollDice = function () {
@@ -54,9 +85,21 @@ const showDice = function () {
 };
 
 btnRoll.addEventListener('click', function () {
-  rollDice();
-  showDice();
-  checkDice();
+  if (playing) {
+    rollDice();
+    showDice();
+    checkDice();
+  }
 });
 
-setGame();
+btnHold.addEventListener('click', function () {
+  if (playing) {
+    setScore();
+    checkScore();
+    changePlayer();
+  }
+});
+
+btnNew.addEventListener('click', init)
+
+init();
