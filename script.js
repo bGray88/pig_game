@@ -8,12 +8,12 @@ const btnNew         = document.querySelector('.btn--new');
 const btnRoll        = document.querySelector('.btn--roll');
 const btnHold        = document.querySelector('.btn--hold');
 const diceImages     = 6;
-let diceFace         = 0;
-let currentScore     = 0;
-let activePlayer     = 0;
-let playerScores     = [0, 0];
-let playing          = true;
 let winningNumber    = 100;
+let diceFace;
+let currentScore;
+let activePlayer;
+let playerScores;
+let playing;
 
 const checkDice = function () {
   if (diceFace === 1) {
@@ -48,25 +48,25 @@ const setScore = function () {
 };
 
 const init = function () {
-  if (playing === false) {
-    resetPlayers();
-    resetScreen();
-    playing = true;
-  }
+  setPlayers();
+  setScreen();
+  playing = true;
 };
 
-const resetPlayers = function () {
+const setPlayers = function () {
   currentScore = 0;
   activePlayer = 0;
   playerScores = [0, 0];
 };
 
-const resetScreen = function () {
+const setScreen = function () {
   hideDice();
-  scoreElements[0].textContent = 0;
-  scoreElements[1].textContent = 0;
-  playerElements[0].classList.remove('player--winner');
-  playerElements[1].classList.remove('player--winner');
+  scoreElements.forEach ( function(playerScore, currentIndex, listObj) {
+    playerScore.textContent = 0;
+  });
+  playerElements.forEach ( function(player, currentIndex, listObj) {
+    player.classList.remove('player--winner');
+  });
   playerElements[0].classList.add('player--active');
   playerElements[1].classList.remove('player--active');
 };
