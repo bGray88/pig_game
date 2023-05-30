@@ -101,14 +101,15 @@ Built using Javascript, CSS, and HTML, this fun game will keep you and another p
 ## Usage
   
   ### Rules
-  The player with the highest score is the winner! The first one to 100 points gets the crown; 
+  The player with the highest score is the winner!<br> 
+  The first one to 100 points gets the crown;<br>
   Roll the dice until your sure of success, but don't wait too long for if the active player roles a 
-  1 then the play switches to the opponent.
+  1 then the play switches to the opponent.<br>
   
   ### How to Play
-  Click the Roll Dice button until your ready to commit your points to the pit.
-  Click the Hold button to accumulate your points to your score.
-  The first player to 100 wins the game. Have fun!
+  Click the Roll Dice button until your ready to commit your points to the pit.<br>
+  Click the Hold button to accumulate your points to your score.<br>
+  The first player to 100 wins the game. Have fun!<br>
   
   ![alt text](images/readme/readme-screenshot03.png)
   
