@@ -98,10 +98,12 @@ Built using Javascript, CSS, and HTML, this fun game will keep you and another p
   
   <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## Usagei
+## Usage
   
   ### Rules
-  The player with the highest score after ten turns is the winner!
+  The player with the highest score is the winner! The first one to 100 points gets the crown; 
+  Roll the dice until your sure of success, but don't wait too long for if the active player roles a 
+  1 then the play switches to the opponent.
   
   ### How to Play
   Click the Roll Dice button until the game ends. Have fun!
